@@ -14,19 +14,6 @@ A production-inspired **observability stack** designed to monitor applications a
 
 ---
 
-## 📌 Overview
-
-This project sets up a **centralized monitoring system** using Docker, enabling visibility into:
-
-* Application behavior
-* Container performance
-* Host-level system metrics
-* Log aggregation and analysis
-
-It follows a modular and scalable architecture aligned with real-world DevOps practices.
-
----
-
 ## 🧰 Tech Stack
 
 | Category       | Tool           | Purpose                                        |
@@ -41,19 +28,9 @@ It follows a modular and scalable architecture aligned with real-world DevOps pr
 
 ---
 
-## ⚙️ What This Project Does
+### 🔍 Project Flow
 
-* Collects **application and container logs**
-* Scrapes **system and container metrics**
-* Stores logs in **Loki** and metrics in **Prometheus**
-* Visualizes everything in **Grafana dashboards**
-* Provides a **single-pane observability view**
-
----
-
-### 🔍 Architecture & Project Flow
-
-![Architecture & Project Flow](Assets/ThreeTierChatApp.png)
+![Project Flow](Assets/ThreeTierChatApp.png)
 
 ---
 
@@ -67,15 +44,48 @@ It follows a modular and scalable architecture aligned with real-world DevOps pr
 
 ---
 
-## 📊 Key Capabilities
+## ⚙️ What This Project Does
 
-* 📈 Real-time system and container monitoring
-* 📜 Centralized log aggregation
-* 🔍 Queryable logs and metrics
-* 📉 Performance bottleneck identification
-* 🧩 Modular architecture for scaling
+* Collects **application and container logs**
+* Scrapes **system and container metrics**
+* Stores logs in **Loki** and metrics in **Prometheus**
+* Visualizes everything in **Grafana dashboards**
+* Provides a **single-pane observability view**
 
 ---
 
+## 🏗️ Architecture Overview
+
+This project implements a clean separation of concerns to ensure the monitoring system remains resilient and scalable.
+
+1. The Metrics Flow (Performance Numbers)
+
+    Infrastructure: cAdvisor and Node Exporter capture hardware and container stats. Prometheus "scrapes" these endpoints directly.
+
+    Application: The Notes App pushes custom OTLP metrics to the OpenTelemetry Collector, which then exposes them for Prometheus.
+
+2. The Logs Flow (Text Events)
+
+    Standard Output: The Notes App generates logs which Docker saves locally.
+
+    Shipping: Promtail tails these files, attaches metadata (labels), and ships them to Loki.
+
+3. Unified Visualization
+
+    Grafana connects to both Prometheus and Loki, allowing you to correlate a sudden spike in CPU (Metrics) with a specific error message (Logs) in a single dashboard.
+
+---
+
+## 📊 Key Capabilities
+
+📈 Real-time system and container monitoring
+
+📜 Centralized log aggregation
+
+🔍 Queryable logs and metrics
+
+📉 Performance bottleneck identification
+
+🧩 Modular architecture for scaling
 
 ---
