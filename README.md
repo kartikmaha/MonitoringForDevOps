@@ -1,74 +1,175 @@
-# Observability Stack for DevOps
+# 🚀 MonitoringForDevOps – Observability Stack
 
-Metrics, logs, and traces — one `docker compose up` away.
+A production-inspired **observability stack** designed to monitor applications and infrastructure using industry-standard tools. This project demonstrates how to collect, store, and visualize **metrics and logs** in a containerized environment.
 
-![Docker + cAdvisor Stack](assets/docker.png)
-![NodeExporter Stack](assets/nodeexporter.png)
+---
 
-## What's in the box
+## 📌 Overview
 
+This project sets up a **centralized monitoring system** using Docker, enabling visibility into:
+
+* Application behavior
+* Container performance
+* Host-level system metrics
+* Log aggregation and analysis
+
+It follows a modular and scalable architecture aligned with real-world DevOps practices.
+
+---
+
+## 🧰 Tech Stack
+
+| Category       | Tool           | Purpose                                        |
+| -------------- | -------------- | ---------------------------------------------- |
+| Metrics        | Prometheus     | Time-series metrics collection & storage       |
+| Logs           | Loki           | Log aggregation and indexing                   |
+| Log Collection | Promtail       | Ships logs from containers to Loki             |
+| Containers     | cAdvisor       | Container-level metrics (CPU, memory, network) |
+| Host Metrics   | Node Exporter  | System-level metrics (CPU, RAM, disk)          |
+| Visualization  | Grafana        | Unified dashboards for logs & metrics          |
+| Orchestration  | Docker Compose | Service orchestration                          |
+
+---
+
+## ⚙️ What This Project Does
+
+* Collects **application and container logs**
+* Scrapes **system and container metrics**
+* Stores logs in **Loki** and metrics in **Prometheus**
+* Visualizes everything in **Grafana dashboards**
+* Provides a **single-pane observability view**
+
+---
+
+## 🔍 Architecture & Flow
+
+```text
+Application / Containers
+        │
+        ├── Logs → Promtail → Loki ─────────┐
+        │                                   │
+        ├── Container Metrics → cAdvisor ─┐  │
+        │                                  ├→ Prometheus ──┐
+        ├── Host Metrics → Node Exporter ─┘                │
+                                                          ↓
+                                                    Grafana
 ```
-Prometheus  ← scrapes ← Node Exporter, cAdvisor, OTEL Collector
-Loki        ← pushes  ← Promtail (container logs)
-OTEL        ← OTLP    → exports metrics to Prometheus
-Grafana     → queries  → Prometheus + Loki (auto-provisioned)
-Notes App   → demo workload
-```
 
-## Quick start
+### Flow Breakdown
+
+* **Logs Pipeline**
+
+  * Applications write logs → Docker stores them → Promtail collects → Loki stores → Grafana visualizes
+
+* **Metrics Pipeline**
+
+  * cAdvisor → container metrics
+  * Node Exporter → host metrics
+  * Prometheus → scrapes & stores → Grafana visualizes
+
+---
+
+## 📊 Key Capabilities
+
+* 📈 Real-time system and container monitoring
+* 📜 Centralized log aggregation
+* 🔍 Queryable logs and metrics
+* 📉 Performance bottleneck identification
+* 🧩 Modular architecture for scaling
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/Observability-For-DevOps.git
-cd Observability-For-DevOps
+git clone https://github.com/kartikmaha/MonitoringForDevOps.git
+cd MonitoringForDevOps
+```
+
+---
+
+### 2. Start the Stack
+
+```bash
 docker compose up -d
 ```
 
-That's it. Open http://localhost:3000 (admin/admin).
+---
 
-## Endpoints
+### 3. Access Services
 
-| Service | URL | What it does |
-|---------|-----|--------------|
-| Grafana | [:3000](http://localhost:3000) | Dashboards for metrics + logs |
-| Prometheus | [:9090](http://localhost:9090) | Metrics store, check `/targets` |
-| Loki | [:3100](http://localhost:3100) | Log aggregation backend |
-| cAdvisor | [:8080](http://localhost:8080) | Container resource metrics |
-| OTEL Collector | `:4317` gRPC / `:4318` HTTP | Send OTLP traces, metrics, logs |
-| Notes App | [:8000](http://localhost:8000) | Sample Django app |
+| Service    | URL                   |
+| ---------- | --------------------- |
+| Grafana    | http://localhost:3000 |
+| Prometheus | http://localhost:9090 |
+| cAdvisor   | http://localhost:8080 |
 
-Node Exporter and Promtail run internally (no exposed ports needed).
+---
 
-## Sending traces to OTEL
+### 4. Grafana Login
 
-The collector accepts OTLP on ports 4317 (gRPC) and 4318 (HTTP). Point your instrumented app at it:
-
-```bash
-# quick test
-curl -X POST http://localhost:4318/v1/traces \
-  -H 'Content-Type: application/json' \
-  -d '{"resourceSpans":[{"resource":{"attributes":[{"key":"service.name","value":{"stringValue":"my-app"}}]},"scopeSpans":[{"spans":[{"traceId":"aaaabbbbccccddddaaaabbbbccccdddd","spanId":"aaaabbbbccccdddd","name":"test","kind":1,"startTimeUnixNano":"1000000000","endTimeUnixNano":"2000000000","status":{}}]}]}]}'
+```text
+Username: admin
+Password: admin
 ```
 
-Metrics from OTLP get exported to Prometheus. Traces go to debug logs (swap in Jaeger/Tempo when ready).
+---
 
-## Project structure
+## 📁 Project Structure (High-Level)
 
-```
+```text
 .
 ├── docker-compose.yml
-├── prometheus.yml                          # scrape config
-├── otel-collector/otel-collector-config.yml
-├── loki/loki-config.yml
-├── promtail/promtail-config.yml
-├── grafana/provisioning/
-│   ├── datasources/datasources.yml         # Prometheus + Loki
-│   └── dashboards/dashboards.yml           # drop JSON files in dashboards/json/
-└── notes-app/                              # Django demo app
+├── prometheus/
+│   └── prometheus.yml
+├── promtail/
+│   └── promtail.yml
+├── grafana/
+│   └── provisioning/
+└── app/
 ```
 
-## Tear down
+---
+
+## 🧠 Design Highlights
+
+* **Separation of concerns** between logs and metrics
+* **Pull-based metrics collection** (Prometheus)
+* **Push-based log aggregation** (Promtail → Loki)
+* **Container-native monitoring** using cAdvisor
+* **Centralized visualization** via Grafana
+
+---
+
+## 🧹 Cleanup
+
+To stop and remove all services:
 
 ```bash
-docker compose down          # stop everything
-docker compose down -v       # stop + delete all data
+docker compose down
 ```
+
+To remove volumes (reset data):
+
+```bash
+docker compose down -v
+```
+
+---
+
+## 💡 Future Enhancements
+
+* Add **Alertmanager** for alerting
+* Integrate **OpenTelemetry** for tracing
+* Add **custom application metrics**
+* Deploy on **Kubernetes (Helm-based setup)**
+
+---
+
+## 📣 Final Note
+
+This project reflects a **real-world observability setup**, demonstrating the ability to design and deploy monitoring systems using modern DevOps tooling. It highlights practical knowledge of **metrics, logging, and system visibility**, essential for production-grade environments.
+
+---
