@@ -8,7 +8,6 @@ A production-inspired **observability stack** designed to monitor applications a
 ![Loki](https://img.shields.io/badge/Loki-0A0A0A?style=for-the-badge&logo=grafana&logoColor=white)
 ![Promtail](https://img.shields.io/badge/Promtail-0A0A0A?style=for-the-badge&logo=grafana&logoColor=white)
 ![cAdvisor](https://img.shields.io/badge/cAdvisor-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
-![Node Exporter](https://img.shields.io/badge/Node_Exporter-339933?style=for-the-badge&logo=prometheus&logoColor=white)
 ![Docker Compose](https://img.shields.io/badge/Docker_Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
 ---
