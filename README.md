@@ -2,13 +2,15 @@
 
 A production-inspired **observability stack** designed to monitor applications and infrastructure using industry-standard tools. This project demonstrates how to collect, store, and visualize **metrics and logs** in a containerized environment.
 
+---
+
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
 ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
-![Loki](https://img.shields.io/badge/Loki-0A0A0A?style=for-the-badge&logo=grafana&logoColor=white)
-![Promtail](https://img.shields.io/badge/Promtail-0A0A0A?style=for-the-badge&logo=grafana&logoColor=white)
+![Loki](https://img.shields.io/badge/Loki-0A1F44?style=for-the-badge&logo=grafana&logoColor=white)
+![Promtail](https://img.shields.io/badge/Promtail-F2A900?style=for-the-badge&logo=grafana&logoColor=black)
 ![cAdvisor](https://img.shields.io/badge/cAdvisor-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
-![Docker Compose](https://img.shields.io/badge/Docker_Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry-6929C4?style=for-the-badge&logo=opentelemetry&logoColor=white)
 
 ---
 
@@ -35,7 +37,7 @@ It follows a modular and scalable architecture aligned with real-world DevOps pr
 | Containers     | cAdvisor       | Container-level metrics (CPU, memory, network) |
 | Host Metrics   | Node Exporter  | System-level metrics (CPU, RAM, disk)          |
 | Visualization  | Grafana        | Unified dashboards for logs & metrics          |
-| Orchestration  | Docker Compose | Service orchestration                          |
+| Orchestration  | Docker Compose | App orchestration                          |
 
 ---
 
@@ -49,9 +51,9 @@ It follows a modular and scalable architecture aligned with real-world DevOps pr
 
 ---
 
-### 🔄 Detailed Project Workflow:
+### 🔍 Architecture & Project Flow
 
-![Project Workflow](Assets/ThreeTierChatApp.png)
+![Architecture & Project Flow](Assets/ThreeTierChatApp.png)
 
 ---
 
