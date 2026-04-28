@@ -2,6 +2,15 @@
 
 A production-inspired **observability stack** designed to monitor applications and infrastructure using industry-standard tools. This project demonstrates how to collect, store, and visualize **metrics and logs** in a containerized environment.
 
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
+![Loki](https://img.shields.io/badge/Loki-0A0A0A?style=for-the-badge&logo=grafana&logoColor=white)
+![Promtail](https://img.shields.io/badge/Promtail-0A0A0A?style=for-the-badge&logo=grafana&logoColor=white)
+![cAdvisor](https://img.shields.io/badge/cAdvisor-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
+![Node Exporter](https://img.shields.io/badge/Node_Exporter-339933?style=for-the-badge&logo=prometheus&logoColor=white)
+![Docker Compose](https://img.shields.io/badge/Docker_Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+
 ---
 
 ## 📌 Overview
