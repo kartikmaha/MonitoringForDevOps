@@ -41,31 +41,19 @@ It follows a modular and scalable architecture aligned with real-world DevOps pr
 
 ---
 
-## 🔍 Architecture & Flow
+### 🔄 Detailed Project Workflow:
 
-```text
-Application / Containers
-        │
-        ├── Logs → Promtail → Loki ─────────┐
-        │                                   │
-        ├── Container Metrics → cAdvisor ─┐  │
-        │                                  ├→ Prometheus ──┐
-        ├── Host Metrics → Node Exporter ─┘                │
-                                                          ↓
-                                                    Grafana
-```
+![Project Workflow](Assets/ThreeTierChatApp.png)
 
-### Flow Breakdown
+---
 
-* **Logs Pipeline**
+## 📚 Project Snapshots
 
-  * Applications write logs → Docker stores them → Promtail collects → Loki stores → Grafana visualizes
+### 📊 Monitoring & Alerts
 
-* **Metrics Pipeline**
+- 📈 **Monitoring Dashboard (Prometheus + Grafana)**  
 
-  * cAdvisor → container metrics
-  * Node Exporter → host metrics
-  * Prometheus → scrapes & stores → Grafana visualizes
+  ![Monitoring](Assets/monitoring.png)
 
 ---
 
@@ -79,97 +67,5 @@ Application / Containers
 
 ---
 
-## 🚀 Getting Started
-
-### 1. Clone Repository
-
-```bash
-git clone https://github.com/kartikmaha/MonitoringForDevOps.git
-cd MonitoringForDevOps
-```
-
----
-
-### 2. Start the Stack
-
-```bash
-docker compose up -d
-```
-
----
-
-### 3. Access Services
-
-| Service    | URL                   |
-| ---------- | --------------------- |
-| Grafana    | http://localhost:3000 |
-| Prometheus | http://localhost:9090 |
-| cAdvisor   | http://localhost:8080 |
-
----
-
-### 4. Grafana Login
-
-```text
-Username: admin
-Password: admin
-```
-
----
-
-## 📁 Project Structure (High-Level)
-
-```text
-.
-├── docker-compose.yml
-├── prometheus/
-│   └── prometheus.yml
-├── promtail/
-│   └── promtail.yml
-├── grafana/
-│   └── provisioning/
-└── app/
-```
-
----
-
-## 🧠 Design Highlights
-
-* **Separation of concerns** between logs and metrics
-* **Pull-based metrics collection** (Prometheus)
-* **Push-based log aggregation** (Promtail → Loki)
-* **Container-native monitoring** using cAdvisor
-* **Centralized visualization** via Grafana
-
----
-
-## 🧹 Cleanup
-
-To stop and remove all services:
-
-```bash
-docker compose down
-```
-
-To remove volumes (reset data):
-
-```bash
-docker compose down -v
-```
-
----
-
-## 💡 Future Enhancements
-
-* Add **Alertmanager** for alerting
-* Integrate **OpenTelemetry** for tracing
-* Add **custom application metrics**
-* Deploy on **Kubernetes (Helm-based setup)**
-
----
-
-## 📣 Final Note
-
-This project reflects a **real-world observability setup**, demonstrating the ability to design and deploy monitoring systems using modern DevOps tooling. It highlights practical knowledge of **metrics, logging, and system visibility**, essential for production-grade environments.
 
 ---
