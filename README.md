@@ -96,6 +96,10 @@ This project follows a modular and scalable observability design:
 |-----------|----------|
 | ![prometheus](assets/prometheus.png) | ![cadvisor](assets/cadvisor.png) |
 
+| Notes-app UI |
+|-----------|
+| ![notes-app-ui](assets/notes-app-ui.png) |
+
 ---
 
 ## 🚀 Key Capabilities
