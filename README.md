@@ -30,17 +30,21 @@ A production-inspired **observability stack** designed to monitor applications a
 
 ### 🔍 Project Flow
 
-![Project Flow](Assets/ThreeTierChatApp.png)
+![Project Flow](assets/monitoring_flow_diagram.png)
 
 ---
 
 ## 📚 Project Snapshots
 
-### 📊 Monitoring & Alerts
+### 📊 Monitoring & Alerts 
 
-- 📈 **Monitoring Dashboard (Prometheus + Grafana)**  
+  ![grafana](assets/grafana.png)
 
-  ![Monitoring](Assets/monitoring.png)
+  ![node-exporter](assets/node-exporter.png)
+
+  ![prometheus](assets/prometheus.png)
+
+  ![cadvisor](assets/cadvisor.png)
 
 ---
 
